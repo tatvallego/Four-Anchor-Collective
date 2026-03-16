@@ -248,19 +248,5 @@
     </div>
 
   </div>
-  <script>
-    function handleSignup() {
-      const input = document.getElementById('email');
-      const success = document.getElementById('success');
-      if (!input.value.trim() || !input.value.includes('@')) {
-        input.style.borderColor = 'rgba(201,168,76,0.9)';
-        setTimeout(() => input.style.borderColor = '', 1500);
-        return;
-      }
-      input.closest('.form-row').style.opacity = '0.4';
-      input.closest('.form-row').style.pointerEvents = 'none';
-      success.style.display = 'block';
-    }
-  </script>
 </body>
 </html>
