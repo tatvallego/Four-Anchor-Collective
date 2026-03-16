@@ -218,8 +218,15 @@
       <div class="form-wrap">
         <label class="form-label" for="email">Join the waitlist</label>
         <div class="form-row">
-          <input type="email" id="email" placeholder="Your email address" />
-          <button onclick="handleSignup()">Notify Me</button>
+         <form name="waitlist" method="POST" data-netlify="true">
+<input type="hidden" name="form-name" value="waitlist">
+
+<div class="form-row">
+<input type="email" name="email" placeholder="Your email address" required>
+<button type="submit">Notify Me</button>
+</div>
+
+</form>
         </div>
         <p class="form-note">No noise. Just an invitation when we're ready.</p>
         <p class="success-msg" id="success">✦ You're on the list. Something beautiful is coming.</p>
