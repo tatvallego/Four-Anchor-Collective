@@ -5,6 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Four Anchors Collective — Coming Soon</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet"/>
+   /* EVENT TEASER */
+  .event-teaser {
+    margin-top: 32px; width: 100%; max-width: 400px;
+    position: relative; z-index: 1;
+    animation: fadeUp 1.2s ease 0.75s both;
+    padding-top: 32px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .event-label {
+    font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 10px; display: block;
+  }
+  .event-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 12px 22px;
+    background: rgba(201,168,76,0.06);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .event-btn:hover { background: rgba(201,168,76,0.12); border-color: rgba(201,168,76,0.7); }
+  .event-btn::after { content: '→'; font-size: 0.75rem; }
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -231,6 +254,11 @@
         <p class="form-note">No noise. Just an invitation when we're ready.</p>
 <p class="success-msg" id="success">★ You're on the list. Something beautiful is coming.</p>
         </div>
+     <!-- EVENT TEASER -->
+  <div class="event-teaser">
+    <span class="event-label">Now Open · August 8, 2026</span>
+    <a href="/experience" class="event-btn">The Anchored Experience</a>
+  </div>
       <div class="bottom-row">
         <div class="anchors">
           <span class="anchor-pill">Body</span>
