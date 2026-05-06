@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="color-scheme" content="light"/>
+  <title>The Anchored Experience — Four Anchors Collective</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: light; scroll-behavior: smooth; background: #f7f2e8; }
+    body { background: #f7f2e8; color: #2c2018; font-family: 'Cormorant Garamond', Georgia, serif; overflow-x: hidden; }
+
+    :root {
+      --cream: #f7f2e8;
+      --cream-dark: #ede8dc;
+      --mocha: #2c1f14;
+      --gold: #C9A084;
+      --gold-light: #e2c9a8;
+      --gold-pale: #f0e4d0;
+      --text: #2c2018;
+      --text-light: #6b5440;
+    }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 32px 60px; text-align: center; background: var(--cream); position: relative; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 30%, rgba(201,160,132,0.12) 0%, transparent 70%); pointer-events: none; }
+    .hero-eyebrow { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .hero-title { font-size: clamp(36px, 9vw, 72px); font-weight: 300; letter-spacing: 0.06em; line-height: 1.1; color: var(--mocha); margin-bottom: 24px; }
+    .hero-subtitle { font-size: clamp(18px, 4vw, 26px); font-weight: 300; font-style: italic; color: var(--text-light); margin-bottom: 48px; }
+    .hero-divider { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
+    .hero-divider span { width: 60px; height: 1px; background: var(--gold); }
+    .hero-divider .star { color: var(--gold); font-size: 14px; }
+    .hero-date { font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; letter-spacing: 0.2em; color: var(--text-light); margin-bottom: 8px; }
+    .hero-time { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 56px; }
+    .btn-primary { display: inline-block; background: var(--mocha); color: var(--cream); font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none; padding: 18px 48px; border-radius: 60px; transition: background 0.3s; }
+    .btn-primary:hover { background: #3d2a1a; }
+    .hero-seats { margin-top: 20px; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: var(--text-light); }
+
+    /* SHARED SECTION ELEMENTS */
+    .section-label { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; text-align: center; display: block; }
+    .section-title { font-size: clamp(30px, 6vw, 50px); font-weight: 300; line-height: 1.2; text-align: center; color: var(--mocha); margin-bottom: 36px; }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-title-light { color: var(--cream); }
+    .divider { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 28px auto; }
+    .divider span { width: 50px; height: 1px; background: var(--gold-light); }
+    .divider .star { color: var(--gold); font-size: 12px; }
+    .divider-light span { background: rgba(201,160,132,0.35); }
+
+    /* INTRO TEXT */
+    .intro-text { font-size: clamp(16px, 3vw, 20px); font-weight: 300; line-height: 1.85; text-align: center; color: var(--text); }
+    .intro-text p { margin-bottom: 24px; }
+    .intro-text p:last-child { margin-bottom: 0; }
+    .intro-accent { font-size: clamp(18px, 3.5vw, 24px); font-style: italic; color: var(--mocha); font-weight: 400; }
+
+    /* ANCHORS GRID */
+    .anchors-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; max-width: 720px; margin: 48px auto 0; }
+    .anchor-card { background: var(--cream); padding: 40px 32px; text-align: center; }
+    .anchor-card:nth-child(1) { border-bottom: 2px solid var(--cream-dark); border-right: 2px solid var(--cream-dark); }
+    .anchor-card:nth-child(2) { border-bottom: 2px solid var(--cream-dark); }
+    .anchor-card:nth-child(3) { border-right: 2px solid var(--cream-dark); }
+    .anchor-name { font-size: clamp(28px, 5vw, 42px); font-weight: 300; color: var(--mocha); margin-bottom: 8px; }
+    .anchor-keywords { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+    .anchor-desc { font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--text-light); }
+
+    /* EMAIL SECTION */
+    .email-inner { max-width: 480px; margin: 0 auto; text-align: center; }
+    .email-tagline { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; letter-spacing: 0.15em; color: var(--text-light); margin-bottom: 40px; }
+    .email-form { display: flex; flex-direction: column; gap: 16px; align-items: center; }
+    .email-input { width: 100%; padding: 16px 24px; border: 1px solid var(--gold-light); background: var(--cream); color: var(--text); font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 300; border-radius: 4px; outline: none; }
+    .email-input::placeholder { color: rgba(107,84,64,0.5); }
+
+    /* RESERVE / DETAILS SECTION */
+    .details-list { list-style: none; margin: 32px auto; text-align: center; }
+    .details-list li { font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; letter-spacing: 0.15em; color: rgba(247,242,232,0.75); padding: 12px 0; border-bottom: 1px solid rgba(201,160,132,0.2); }
+    .details-list li:first-child { border-top: 1px solid rgba(201,160,132,0.2); }
+    .details-list strong { color: var(--gold); font-weight: 400; }
+    .details-investment { font-family: 'Cormorant Garamond', serif; font-size: clamp(56px, 12vw, 88px); font-weight: 300; color: var(--cream); margin: 36px 0 4px; line-height: 1; }
+    .details-investment-label { font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 40px; }
+    .btn-light { display: inline-block; background: var(--gold); color: var(--mocha); font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none; padding: 18px 48px; border-radius: 60px; transition: background 0.3s; }
+    .btn-light:hover { background: var(--gold-light); }
+    .details-seats { margin-top: 20px; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: rgba(247,242,232,0.4); }
+
+    /* FOOTER */
+    footer { padding: 40px 32px; text-align: center; border-top: 1px solid var(--gold-pale); background: var(--cream); }
+    .footer-brand { font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .footer-tagline { font-size: 13px; font-style: italic; font-weight: 300; color: var(--text-light); }
+
+    @media (max-width: 500px) {
+      .anchors-grid { grid-template-columns: 1fr; }
+      .anchor-card { border-right: none !important; border-bottom: 2px solid var(--cream-dark) !important; }
+      .anchor-card:last-child { border-bottom: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Four Anchors Collective Presents</p>
+  <h1 class="hero-title">The Anchored<br/>Experience</h1>
+  <p class="hero-subtitle">Founding Gathering of the Four Anchors</p>
+  <div class="hero-divider"><span></span><span class="star">✦</span><span></span></div>
+  <p class="hero-date">August 8, 2026</p>
+  <p class="hero-time">2:30 – 7:00 PM &nbsp;·&nbsp; Archetype Yoga, Pasadena</p>
+  <a href="#reserve" class="btn-primary">Reserve Your Seat</a>
+  <p class="hero-seats">Space is limited to 25</p>
+</div>
+
+<!-- A RETURN, NOT AN ESCAPE -->
+<div style="background:#f7f2e8; padding: 100px 32px;">
+  <div style="max-width:600px; margin:0 auto; text-align:center;">
+    <span class="section-label">The Gathering</span>
+    <h2 class="section-title">A Return,<br/><em>Not an Escape</em></h2>
+    <div class="divider"><span></span><span class="star">✦</span><span></span></div>
+    <div class="intro-text">
+      <p>The Anchored Experience is the inaugural gathering of the Four Anchors.</p>
+      <p>On August 8, we gather intentionally — not to escape life, but to return to ourselves.</p>
+      <p>Through guided teaching, embodied practice, and structured integration, you will experience the stabilization framework of Body, Mind, Spirit, and Integration.</p>
+      <p class="intro-accent">This is not inspiration alone.<br/>It is alignment in practice.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHO IT'S FOR -->
+<div style="background:#ede8dc; padding: 100px 32px;">
+  <div style="max-width:600px; margin:0 auto; text-align:center;">
+    <span style="font-family:'Jost',sans-serif; font-size:10px; font-weight:400; letter-spacing:0.35em; text-transform:uppercase; color:#C9A084; margin-bottom:28px; display:block;">The Gathering Is For You</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,6vw,46px); font-weight:300; line-height:1.2; color:#2c1f14; margin-bottom:36px;">Who This Is For</h2>
+    <div style="display:flex; align-items:center; justify-content:center; gap:14px; margin:0 auto 48px;">
+      <span style="width:50px; height:1px; background:#e2c9a8; display:block;"></span>
+      <span style="color:#C9A084; font-size:12px;">✦</span>
+      <span style="width:50px; height:1px; background:#e2c9a8; display:block;"></span>
+    </div>
+    <div style="max-width:420px; margin:0 auto;">
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3vw,19px); font-weight:300; line-height:1.7; color:#2c2018; padding:16px 0; border-bottom:1px solid #f0e4d0;">For anyone tired of rushing through life</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3vw,19px); font-weight:300; line-height:1.7; color:#2c2018; padding:16px 0; border-bottom:1px solid #f0e4d0;">Craving peace, balance, and breathing room</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3vw,19px); font-weight:300; line-height:1.7; color:#2c2018; padding:16px 0; border-bottom:1px solid #f0e4d0;">Looking for time to reflect and reset</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3vw,19px); font-weight:300; line-height:1.7; color:#2c2018; padding:16px 0; border-bottom:1px solid #f0e4d0;">Wanting a break that actually feels restorative</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3vw,19px); font-weight:300; line-height:1.7; color:#2c2018; padding:16px 0; border-bottom:1px solid #f0e4d0;">Seeking connection with like-minded women</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3vw,19px); font-weight:300; line-height:1.7; color:#2c2018; padding:16px 0;">Ready to invest in themselves — for once</p>
+    </div>
+  </div>
+</div>
+
+<!-- THE FOUR ANCHORS -->
+<div style="background:#ede8dc; padding: 100px 32px;">
+  <div style="text-align:center;">
+    <span class="section-label">The Framework</span>
+    <h2 class="section-title">The Four Anchors</h2>
+  </div>
+  <div class="anchors-grid">
+    <div class="anchor-card">
+      <div class="anchor-name">Body.</div>
+      <div class="anchor-keywords">Stability · Strength · Nourishment</div>
+      <div class="anchor-desc">Reconnecting with the body as a source of safety and strength.</div>
+    </div>
+    <div class="anchor-card">
+      <div class="anchor-name">Mind.</div>
+      <div class="anchor-keywords">Clarity · Awareness · Sovereignty</div>
+      <div class="anchor-desc">Reducing mental noise and restoring inner authority.</div>
+    </div>
+    <div class="anchor-card">
+      <div class="anchor-name">Spirit.</div>
+      <div class="anchor-keywords">Connection · Meaning · Alignment</div>
+      <div class="anchor-desc">Practices that reconnect you to something deeper.</div>
+    </div>
+    <div class="anchor-card">
+      <div class="anchor-name">Integration.</div>
+      <div class="anchor-keywords">Embodiment · Consistency · Action</div>
+      <div class="anchor-desc">Turning insight into lived change.</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT TO EXPECT -->
+<div style="background:#f7f2e8; padding: 100px 32px;">
+  <div style="max-width:600px; margin:0 auto; text-align:center;">
+    <span style="font-family:'Jost',sans-serif; font-size:10px; font-weight:400; letter-spacing:0.35em; text-transform:uppercase; color:#C9A084; margin-bottom:28px; display:block;">The Experience</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,6vw,46px); font-weight:300; line-height:1.2; color:#2c1f14; margin-bottom:36px;">What You'll Experience</h2>
+    <div style="display:flex; align-items:center; justify-content:center; gap:14px; margin:0 auto 48px;">
+      <span style="width:50px; height:1px; background:#e2c9a8; display:block;"></span>
+      <span style="color:#C9A084; font-size:12px;">✦</span>
+      <span style="width:50px; height:1px; background:#e2c9a8; display:block;"></span>
+    </div>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3vw,20px); font-weight:300; line-height:1.85; color:#2c2018; margin-bottom:24px;">This is not about doing more. It is about finally giving yourself permission to do less.</p>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3vw,20px); font-weight:300; line-height:1.85; color:#2c2018; margin-bottom:56px;">At points throughout the gathering, we will invite you to step away from your phone — to disconnect from the noise and reconnect with what is right in front of you.</p>
+    <div style="max-width:520px; margin:0 auto; text-align:left;">
+      <div style="padding: 28px 0; border-bottom: 1px solid #f0e4d0;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(17px,3vw,21px); font-weight:500; color:#2c1f14; margin-bottom:8px;">Two Guest Speakers</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(14px,2.5vw,17px); font-weight:300; line-height:1.8; color:#6b5440;">Each anchor — Body and Mind — brought to life by a voice who has done this work. Guided teaching that meets you where you are.</p>
+      </div>
+      <div style="padding: 28px 0; border-bottom: 1px solid #f0e4d0;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(17px,3vw,21px); font-weight:500; color:#2c1f14; margin-bottom:8px;">A Guided Spiritual Practice</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(14px,2.5vw,17px); font-weight:300; line-height:1.8; color:#6b5440;">Not performance. Not pressure. A moment to come back to yourself — through breath, stillness, and something that asks nothing from you except presence.</p>
+      </div>
+      <div style="padding: 28px 0; border-bottom: 1px solid #f0e4d0;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(17px,3vw,21px); font-weight:500; color:#2c1f14; margin-bottom:8px;">A Structured Integration Ritual</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(14px,2.5vw,17px); font-weight:300; line-height:1.8; color:#6b5440;">Because insight without a bridge back to daily life fades. This is the practice of taking what you've felt here and making it yours to keep.</p>
+      </div>
+      <div style="padding: 28px 0; border-bottom: 1px solid #f0e4d0;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(17px,3vw,21px); font-weight:500; color:#2c1f14; margin-bottom:8px;">Intentional Community</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(14px,2.5vw,17px); font-weight:300; line-height:1.8; color:#6b5440;">Twenty-five women, gathered with purpose. The kind of room where you don't have to explain yourself — because everyone here already understands.</p>
+      </div>
+      <div style="padding: 28px 0; border-bottom: 1px solid #f0e4d0;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(17px,3vw,21px); font-weight:500; color:#2c1f14; margin-bottom:8px;">Light Nourishment</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(14px,2.5vw,17px); font-weight:300; line-height:1.8; color:#6b5440;">Curated bites and beverages designed to ground and restore — because how we nourish ourselves is part of the practice too.</p>
+      </div>
+      <div style="padding: 28px 0;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(17px,3vw,21px); font-weight:500; color:#2c1f14; margin-bottom:8px;">Four Hours of Grounded, Intentional Space</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(14px,2.5vw,17px); font-weight:300; line-height:1.8; color:#6b5440;">Not rushed. Not packed. Held with care from beginning to end — so you leave feeling more like yourself than when you arrived.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY IT'S WORTH IT -->
+<div style="background:#f7f2e8; padding: 100px 32px; border-top: 1px solid #f0e4d0;">
+  <div style="max-width:600px; margin:0 auto; text-align:center;">
+    <span style="font-family:'Jost',sans-serif; font-size:10px; font-weight:400; letter-spacing:0.35em; text-transform:uppercase; color:#C9A084; margin-bottom:28px; display:block;">The Investment</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,6vw,46px); font-weight:300; line-height:1.2; color:#2c1f14; margin-bottom:36px;">Why It's Worth It</h2>
+    <div style="display:flex; align-items:center; justify-content:center; gap:14px; margin:28px auto;">
+      <span style="width:50px; height:1px; background:#e2c9a8; display:block;"></span>
+      <span style="color:#C9A084; font-size:12px;">✦</span>
+      <span style="width:50px; height:1px; background:#e2c9a8; display:block;"></span>
+    </div>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3vw,20px); font-weight:300; line-height:1.85; color:#2c2018; margin-bottom:24px;">Because life rarely gives you the chance to slow down and put yourself first.</p>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3vw,20px); font-weight:300; line-height:1.85; color:#2c2018; margin-bottom:24px;">Stepping away from the noise — and into meaningful connection with others — has a way of shifting how you feel, how you think, and how you return to your everyday life.</p>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3vw,20px); font-weight:300; line-height:1.85; color:#2c2018; margin-bottom:48px;">The Anchored Experience offers something we all struggle to find: time, space, and people who understand.</p>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(20px,4vw,28px); font-style:italic; font-weight:400; color:#2c1f14; line-height:1.6;">It is a rare opportunity to be present in the moment<br/>and return to yourself.</p>
+  </div>
+</div>
+
+<!-- DETAILS + RESERVE -->
+<div id="reserve" style="background:#2c1f14; padding: 100px 32px; text-align:center;">
+  <div style="max-width:480px; margin:0 auto;">
+    <span class="section-label">Reserve Your Place</span>
+    <h2 class="section-title section-title-light">The Anchored Experience</h2>
+    <div class="divider divider-light"><span></span><span class="star">✦</span><span></span></div>
+    <ul class="details-list">
+      <li><strong>Date</strong> &nbsp;·&nbsp; August 8, 2026</li>
+      <li><strong>Time</strong> &nbsp;·&nbsp; 2:30 – 7:00 PM</li>
+      <li><strong>Location</strong> &nbsp;·&nbsp; Archetype Yoga, Pasadena</li>
+    </ul>
+    <div class="details-investment">$100</div>
+    <div class="details-investment-label">Investment</div>
+    <a href="https://venmo.com/u/FourAnchors?txn=pay&amount=100&note=The%20Anchored%20Experience%20-%20Aug%208" target="_blank" rel="noopener noreferrer" class="btn-light">Reserve Your Seat</a>
+    <p class="details-seats">Limited to 25 participants</p>
+  </div>
+</div>
+
+<!-- JOIN THE COLLECTIVE -->
+<div style="background:#ede8dc; padding: 100px 32px;">
+  <div class="email-inner">
+    <span class="section-label">Stay Connected</span>
+    <h2 class="section-title">Join the Four Anchors Collective</h2>
+    <div class="divider"><span></span><span class="star">✦</span><span></span></div>
+    <p class="email-tagline">Gather. Ritual. Integration.<br/>Be notified as new experiences open.</p>
+    <div class="email-form">
+      <input class="email-input" type="email" placeholder="Email Address"/>
+      <a href="#" class="btn-primary" style="display:inline-block;">Subscribe</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-brand">Four Anchors Collective</p>
+  <p class="footer-tagline">Body · Mind · Spirit · Integration</p>
+</footer>
+
+</body>
+</html>
